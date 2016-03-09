@@ -1,0 +1,111 @@
+body{
+    background: url("../images/login.png");
+}
+input{
+    border: none;
+}
+.login-con{
+    width: 100%;
+    margin: 0 auto;
+}
+.login-con .login-center{
+    width: 750px;
+    height:350px;
+    margin:200px auto;
+}
+/*登录logo*/
+.login-center .login-logo{
+    width: 375px;
+    height: 350px;
+    background: url("../images/log.png");
+    background-size: 375px 350px;
+    position: relative;
+}
+.login-center .log-in{
+    width: 375px;
+    height: 350px;
+    background: url("../images/sign-up.png");
+    background-size: 375px 350px;
+    float: right;
+    position: relative;
+    top: -350px;
+}
+.login-center .company-logo{
+    width: 375px;
+    height: 350px;
+    background: url("../images/login-logo.png");
+    background-size: 375px 360px;
+    cursor: pointer;
+}
+.login-center .log-in .log-contant{
+    width:271px;
+    margin: 45px auto;
+}
+.login-center .log-in .sign-contant{
+    width:271px;
+    margin: 55px auto;
+}
+.log-contant .alert,.sign-contant .alert{
+    padding:10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.checkbox1{
+    padding-left: 16px;
+    padding-top: 5px;
+    color: #D9D2B0;
+}
+/*登录输入框*/
+
+.form-control{
+    background-color: transparent!important;
+    border-radius: 0!important;
+    border:0!important;
+    border-bottom: 1px solid #D9D2B0!important;
+    -webkit-box-shadow: 0 0px 0px ;
+    -moz-box-shadow:  0 0px 0px ;
+    box-shadow:  0 0px 0px !important;
+    padding: 2px!important;
+}
+.form-horizontal .form-group.buttom-group{
+    margin-top: 24px;
+    margin-left: -157px!important;
+}
+.form-horizontal .form-group.buttom-group button{
+    list-style-type:none;
+    border: 0;
+}
+.form-horizontal .form-group.buttom-group .btn {
+    background: transparent;
+    border: 1px solid #D9D2B0;
+    border-radius:0!important;
+    margin-left:70px;
+    color: #ccc;
+    width:100px;
+    height:36px;
+}
+.form-horizontal .form-group.buttom-group .btn a{
+    color: #cccccc;
+    text-decoration: none;
+}
+.form-horizontal .form-group.buttom-group .btn:hover,.form-horizontal .form-group.buttom-group .btn a:hover{
+    color:#DA6975;
+}
+.col-sm-10{
+    width: 100%!important;
+}
+.form-horizontal .form-group.buttom-group .login-btn,.back-btn{
+    float: left;
+}
+/*忘记密码*/
+.forget-pwd{
+    text-align: center;
+    color: #5a7185;
+    font-size: 12px;
+    margin-top: 32px;
+    cursor: pointer;
+}
+.forget-pwd p:hover{
+    color: #D9D2B0;
+    text-decoration: underline;
+}

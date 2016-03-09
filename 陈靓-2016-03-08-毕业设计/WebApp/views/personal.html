@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <!-- Bootstrap core CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+
+    <!-- ionicons -->
+    <link href="/stylesheets/ionicons.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+    <!-- Select2 -->
+    <link href="//cdn.bootcss.com/select2/4.0.1/css/select2.min.css" rel="stylesheet">
+    <!-- Simplify -->
+    <link href="/stylesheets/simplify.css" rel="stylesheet">
+    <link href="/stylesheets/personal.css" rel="stylesheet">
+</head>
+<body class="overflow-hidden">
+<div class="wrapper preload">
+
+
+
+    <div class="main-container center-con">
+        <div class="padding-md">
+
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="smart-widget">
+                        <div class="smart-widget-header">
+                            个人资料填写
+
+                        </div>
+                        <div class="smart-widget-inner">
+
+                            <div class="smart-widget-body">
+                                <form class="no-margin" id="formValidate2" data-validate="parsley" novalidate method="post">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">用户名</label>
+                                                <input type="text" name="data_name" placeholder="请输入您的用户名..." class="form-control input-sm dataname"  >
+                                                <p class="error-text1"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">年龄</label>
+                                                <input type="text" name="data_age" placeholder="请输入您的年龄..." class="form-control input-sm dataage"  >
+                                            </div>
+                                        </div><!-- /.col -->
+
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label class="control-label">目前职业</label>
+                                                <input type="text" name="data_wok" placeholder="当前的职业..." class="form-control input-sm datawork" >
+                                                <p class="error-text2"></p>
+                                            </div>
+                                        </div><!-- /.col -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">目前所在公司</label>
+                                                <input type="text" name="data_company" placeholder="当前就职的公司..." class="form-control input-sm datacompany" >
+                                            </div>
+                                        </div><!-- /.col -->
+                                    </div><!-- /.row -->
+                                    <div class="form-group">
+                                        <label class="control-label">电子邮箱</label>
+                                        <% if (locals.username) { %>
+                                        <input type="text" name="data_email" placeholder="请输入您的电子邮箱..." class="form-control input-sm dataemail"  value="<%= username %>" readonly>
+                                        <% } %>
+                                        <p class="error-text3"></p>
+                                    </div><!-- /form-group -->
+                                    <div class="form-group">
+                                        <label class="control-label">电话</label>
+                                        <input type="text" name="data_phone" placeholder="请输入您的手机号..." class="form-control input-sm dataphone"  data-parsley-type="number" >
+                                        <p class="error-text4"></p>
+                                    </div><!-- /form-group -->
+                                    <div class="form-group">
+                                        <label class="control-label">生日</label>
+                                        <div class="input-group"  >
+                                        <input type="text" name="data_birthday" class="datepicker-input form-control databrithday" placeholder="请选择您的生日......">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div><!-- /form-group -->
+
+                                    <div class="form-group">
+                                        <label class="control-label">个人信息</label>
+                                        <textarea class="form-control dataself" name="data_self" placeholder="请输入自己信息..." rows="3" ></textarea>
+                                    </div><!-- /form-group -->
+
+                                    <div class="text-right m-top-md">
+                                        <button class="btn btn-info next-btn" type="submit">下一步</button>
+                                        <button class="btn btn-default" type="reset">重置</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- ./smart-widget-inner -->
+                    </div><!-- ./smart-widget -->
+                </div><!-- /.col-->
+            </div><!-- /.row -->
+        </div><!-- /.padding-md -->
+    </div><!-- /main-container -->
+
+
+</div><!-- /wrapper -->
+
+<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
+
+<!-- Delete Widget Confirmation -->
+<div class="custom-popup delete-widget-popup delete-confirmation-popup" id="deleteWidgetConfirm">
+    <div class="popup-header text-center">
+				<span class="fa-stack fa-4x">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+				</span>
+    </div>
+    <div class="popup-body text-center">
+        <h5>Are you sure to delete this widget?</h5>
+        <strong class="block m-top-xs"><i class="fa fa-exclamation-circle m-right-xs text-danger"></i>This action cannot be undone</strong>
+
+        <div class="text-center m-top-lg">
+            <a class="btn btn-success m-right-sm remove-widget-btn">Delete</a>
+            <a class="btn btn-default deleteWidgetConfirm_close">Cancel</a>
+        </div>
+    </div>
+</div>
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/javascripts/js/bootstrap.min.js"></script>
+
+<!-- Popup Overlay -->
+<script src='/javascripts/jquery.popupoverlay.min.js'></script>
+
+<!-- Parsley -->
+<script src="//cdn.bootcss.com/parsley.js/2.3.2/parsley.min.js"></script>
+
+<!-- Slimscroll -->
+<script src='/javascripts/jquery.slimscroll.min.js'></script>
+
+<!-- Modernizr -->
+<script src='/javascripts/modernizr.min.js'></script>
+<script src='//cdn.bootcss.com/moment.js/2.11.2/moment.min.js'></script>
+
+<!-- Date Time picker -->
+<script src='/javascripts/uncompressed/bootstrap-datetimepicker.js'></script>
+
+<!-- Select2 -->
+<script src='//cdn.bootcss.com/select2/4.0.1/js/select2.min.js'></script>
+<!-- Simplify -->
+<script type="text/javascript" src="/javascripts/jquery.cityselect.js"></script>
+<script src="/javascripts/simplify/simplify.js"></script>
+<script src="/javascripts/personal.js"></script>
+</body>
+</html>

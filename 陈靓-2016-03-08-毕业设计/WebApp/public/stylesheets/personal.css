@@ -1,0 +1,25 @@
+.center-con{
+    margin: 0 auto;
+    width: 70%;
+}
+@media (min-width: 992px) {
+    .col-md-6 {
+         width: 100%;
+    }
+}
+.no-margin .form-group {
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+#inlineRadio1{
+    margin: 4px;
+    margin-left: 20px;
+}
+.checkbox{
+    margin-left: 1px;
+}
+.center-con .custom-radio{
+    margin-right: 6px;
+}

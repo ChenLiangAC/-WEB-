@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+	    <meta charset="utf-8">
+	    <title><%= title %></title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+
+	    <!-- Bootstrap core CSS -->
+	    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- Font Awesome -->
+		<link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+
+		<!-- ionicons -->
+		<link href="/stylesheets/ionicons.min.css" rel="stylesheet">
+
+		<!-- Simplify -->
+		<!--<link href="/stylesheets/simplify.css" rel="stylesheet">-->
+		<link href="/bulid/simplify-css.min.css" rel="stylesheet">
+
+  	</head>
+
+  	<body class="overflow-hidden">
+		<div class="wrapper preload">
+
+			<header class="top-nav">
+				<div class="top-nav-inner">
+					<div class="nav-header">
+						<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleSM">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						
+						<ul class="nav-notification pull-right">
+							<li>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i></a>
+								<span class="badge badge-danger bounceIn">1</span>
+								<ul class="dropdown-menu dropdown-sm pull-right">
+									<li class="user-avatar">
+										<img src="/images/profile/profile1.jpg" alt="" class="img-circle">
+										<div class="user-content">
+											<% if (locals.username) { %>
+											<h5 class="no-m-bottom"><%= username %></h5>
+											<% } %>
+											<div class="m-top-xs">
+												<a href="/profile" class="m-right-sm">个人资料</a>
+												<a href="/login">退出</a>
+											</div>
+										</div>
+									</li>	  
+
+
+								</ul>
+							</li>
+						</ul>
+
+						<a href="/" class="brand">
+							<i><img src="/images/logo.png" alt="" width="20" height="23"></i><span class="brand-name"><img
+								src="/images/weblogo.png" alt=""></span>
+						</a>
+					</div>
+					<div class="nav-container">
+						<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleLG">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+
+						<div class="pull-right m-right-sm">
+							<div class="user-block hidden-xs">
+								<a href="#" id="userToggle" data-toggle="dropdown">
+									<img src="images/profile/profile1.jpg" alt="" class="img-circle inline-block user-profile-pic">
+									<% if (locals.username) { %>
+									<div class="user-detail inline-block">
+										<%= username %>
+										<i class="fa fa-angle-down"></i>
+									</div>
+									<% } %>
+								</a>
+								<div class="panel border dropdown-menu user-panel">
+									<div class="panel-body paddingTB-sm">
+										<ul>
+											<li>
+												<a href="/profile">
+													<i class="fa fa-edit fa-lg"></i><span class="m-left-xs">个人资料</span>
+												</a>
+											</li>
+
+											<li>
+												<a href="/logout">
+													<i class="fa fa-power-off fa-lg"></i><span class="m-left-xs">退出</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div><!-- ./top-nav-inner -->	
+			</header>
+			<!--左侧导航栏-->
+			<aside class="sidebar-menu fixed">
+				<div class="sidebar-inner scrollable-sidebar">
+					<div class="main-menu">
+						<ul class="accordion">
+							<li class="menu-header">
+								个人主页
+							</li>
+
+							<li class="bg-palette2 active">
+								<a href="/main">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-desktop fa-lg"></i></span>
+										<span class="text m-left-sm">个人主页</span>
+									</span>
+									<span class="menu-content-hover block">
+										个人主页
+									</span>
+								</a>
+							</li>
+							<li class="openable bg-palette3">
+								<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-camera fa-lg"></i></span>
+										<span class="text m-left-sm">生活记录</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										生活记录
+									</span>
+								</a>
+								<ul class="submenu">
+									<li><a href="/blog"><span class="submenu-label">最近动态</span></a></li>
+									<li><a href="/publish_blogs"><span class="submenu-label">发布心情</span></a></li>
+
+								</ul>
+							</li>
+
+							<li class="openable bg-palette4">
+								<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-tags fa-lg"></i></span>
+										<span class="text m-left-sm">日程管理</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										日程管理
+									</span>
+								</a>
+								<ul class="submenu">
+
+									<li><a href="/todolist"><span class="submenu-label">ToDoList</span></a></li>
+
+								</ul>
+							</li>
+						</ul>
+					</div>
+
+				</div><!-- sidebar-inner -->
+			</aside>
+			<!--博客主要界面-->
+			<div class="main-container">
+				<div class="padding-md">
+					<h3 class="header-text m-top-lg">
+						生活记录
+					</h3>
+
+					<div class="row">
+						<div class="col-md-8">
+							<div class="blog-wrapper">
+								<% PostGet_all.forEach(	function(PostGet_all){%>
+								<div class="blog-list">
+
+									<div class="blog-header clearfix m-bottom-md">
+										<div class="blog-date">
+											<div class="user-profile-pic clearfix">
+												<img src="images/profile/profile3.jpg" alt="" class="user-img">
+											</div>
+
+										</div>
+
+										<!--文章标题-->
+										<div class="blog-title">
+											<div class="text-upper"><%=PostGet_all.mood_title %></div>
+											<!--用户名-->
+											<div class="text-muted font-12">
+												By <a href="#"><%=PostGet_all.mood_write %></a>
+
+												<span class="m-left-xs m-right-xs">|</span>
+												<!--文章发布时间-->
+												<span><i class="fa fa-comments"></i> <%=PostGet_all.mood_date %></span>
+											</div>
+										</div>
+									</div><!-- ./blog-header -->
+									<!--发布的图片-->
+									<div class="bg-white paddingTB-sm paddingLR-md">
+										<div class="m-bottom-md clearfix">
+											<div class="user-profile-pic clearfix">
+												<img src="<%=PostGet_all.mood_img %>" alt="">
+											</div>
+
+										</div>
+										<!--文章内容-->
+										<p class="m-top-sm">
+											<%=PostGet_all.mood_content %>
+										</p>
+										<div class="m-top-md text-right">
+											<a href="#" class="text-normal m-right-sm widget-remove-option"><i class="fa fa-trash-o m-right-xs"></i>删除</a>
+										</div>
+								</div>
+									<!--删除文章-->
+									<form action="/blogdelete" method="get">
+									<div class="custom-popup delete-widget-popup delete-confirmation-popup" id="deleteWidgetConfirm">
+										<div class="popup-header text-center">
+										<span class="fa-stack fa-4x">
+										  <i class="fa fa-circle fa-stack-2x"></i>
+										  <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+										</span>
+										</div>
+										<div class="popup-body text-center">
+											<h5>确定删除这条数据吗?</h5>
+											<strong class="block m-top-xs"><i class="fa fa-exclamation-circle m-right-xs text-danger"></i>数据删除后不能恢复</strong>
+
+											<div class="text-center m-top-lg">
+												<a href="/blogdelete/<%=PostGet_all.mood_id %>" class="btn btn-success m-right-sm remove-widget-btn">删除</a>
+												<a href="/blog" class="btn btn-default deleteWidgetConfirm_close">取消</a>
+											</div>
+										</div>
+									</div>
+									</form>
+								</div><!-- ./blog-list -->
+
+
+								<%}); %>
+
+								<%- Create_links %>
+
+							</div><!-- ./blog-wrapper -->
+						</div><!-- ./col -->
+
+					</div>
+				</div><!-- ./padding-md -->
+			</div><!-- /main-container -->
+		</div><!-- /wrapper -->
+
+		<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
+
+		<!-- Jquery -->
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		
+		<!-- Bootstrap -->
+	    <script src="/javascripts/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll -->
+		<script src='/javascripts/jquery.slimscroll.min.js'></script>
+		
+		<!-- Popup Overlay -->
+		<script src='/javascripts/jquery.popupoverlay.min.js'></script>
+
+		<!-- Modernizr -->
+		<script src='/javascripts/modernizr.min.js'></script>
+
+		<!-- Simplify -->
+
+		<script src="/javascripts/simplify/simplify.js"></script>
+
+
+	
+  	</body>
+</html>

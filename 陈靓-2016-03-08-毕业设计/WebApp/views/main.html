@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+
+    <!-- ionicons -->
+    <link href="/stylesheets/ionicons.min.css" rel="stylesheet">
+
+    <!-- Morris -->
+    <link href="/stylesheets/morris.css" rel="stylesheet"/>
+
+    <!-- Datepicker -->
+    <link href="/stylesheets/datepicker.css" rel="stylesheet"/>
+
+    <!-- Animate -->
+    <link href="/stylesheets/animate.min.css" rel="stylesheet">
+
+    <!-- Owl Carousel -->
+    <link href="/stylesheets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/stylesheets/owl.theme.default.min.css" rel="stylesheet">
+
+    <!-- Simplify -->
+    <link href="/stylesheets/simplify.css" rel="stylesheet">
+    <!--<link href="/bulid/simplify-css.min.css" rel="stylesheet">-->
+
+</head>
+
+<body class="overflow-hidden">
+<div class="wrapper preload">
+    <!--头部信息栏-->
+    <header class="top-nav">
+        <div class="top-nav-inner">
+            <div class="nav-header">
+                <button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleSM">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <ul class="nav-notification pull-right">
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i></a>
+                        <span class="badge badge-danger bounceIn">1</span>
+                        <ul class="dropdown-menu dropdown-sm pull-right user-dropdown">
+
+                            <li class="user-avatar">
+                                <img src="images/profile/profile1.jpg" alt="" class="img-circle">
+                                <!--用户名-->
+                                <div class="user-content">
+                                    <% if (locals.username) { %>
+                                    <h5 class="no-m-bottom"><%= username %></h5>
+                                    <% } %>
+                                    <div class="m-top-xs">
+                                        <a href="/profile" class="m-right-sm">个人资料</a>
+                                        <a href="/logout">退出</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--返回官网-->
+                <a href="/" class="brand">
+                    <i><img src="/images/logo.png" alt="" width="20" height="23"></i><span class="brand-name"><img
+                        src="/images/weblogo.png" alt=""></span>
+                </a>
+            </div>
+            <!--头部导航栏-->
+            <div class="nav-container">
+                <button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleLG">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="pull-right m-right-sm">
+                    <div class="user-block hidden-xs">
+
+                        <a href="#" id="userToggle" data-toggle="dropdown">
+                            <img src="images/profile/profile1.jpg" alt=""
+                                 class="img-circle inline-block user-profile-pic">
+                            <% if (locals.username) { %>
+                            <div class="user-detail inline-block">
+                                <%= username %>
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                            <% } %>
+                        </a>
+
+                        <div class="panel border dropdown-menu user-panel">
+                            <div class="panel-body paddingTB-sm">
+                                <ul>
+                                    <li>
+                                        <a href="/profile">
+                                            <i class="fa fa-edit fa-lg"></i><span
+                                                class="m-left-xs">个人资料/My Profile</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/logout">
+                                            <i class="fa fa-power-off fa-lg"></i><span
+                                                class="m-left-xs">退出/Sign out</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--左侧导航栏-->
+    <aside class="sidebar-menu fixed">
+        <div class="sidebar-inner scrollable-sidebar">
+            <div class="main-menu">
+                <ul class="accordion">
+                    <li class="menu-header">
+                        个人主页
+                    </li>
+
+                    <li class="bg-palette2 active">
+                        <a href="/main">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-desktop fa-lg"></i></span>
+										<span class="text m-left-sm">个人主页</span>
+									</span>
+									<span class="menu-content-hover block">
+										个人主页
+									</span>
+                        </a>
+                    </li>
+                    <!--生活记录-->
+                    <li class="openable bg-palette3">
+                        <a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-camera fa-lg"></i></span>
+										<span class="text m-left-sm">生活记录</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										生活记录
+									</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/blog"><span class="submenu-label">最近动态</span></a></li>
+                            <li><a href="/publish_blogs"><span class="submenu-label">发布心情</span></a></li>
+
+                        </ul>
+                    </li>
+                    <!--日程管理-->
+                    <li class="openable bg-palette4">
+                        <a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-tags fa-lg"></i></span>
+										<span class="text m-left-sm">日程管理</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										日程管理
+									</span>
+                        </a>
+
+                        <ul class="submenu">
+
+                            <li><a href="/todolist"><span class="submenu-label">ToDoList</span></a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div><!-- sidebar-inner -->
+    </aside>
+    <!--个人主页主要界面-->
+    <div class="main-container">
+        <div class="padding-md">
+            <div class="row">
+                <% Datalist.forEach(function(item){ %>
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        个人主页
+                    </div>
+
+                    <div class="page-sub-header">
+                        Welcome Back, <%= item.data_name %> , <i class="fa fa-map-marker text-danger"></i><a
+                            href="/profile" class="localction"></a>
+                    </div>
+
+                </div>
+                <div class="col-sm-6 text-right text-left-sm p-top-sm">
+                </div>
+            </div>
+            <!--个人信息-->
+            <div class="row m-top-md">
+                <div class="user-widget">
+                    <div class="user-widget-body bg-grey">
+                        <img src="images/profile/profile1.jpg" alt="">
+                        <div class="user-detail">
+
+                            <div class="m-top-sm"><%= item.data_name %></div>
+
+                            <div class="small-text"><%= item.data_work %></div>
+                        </div>
+                    </div>
+                    <%});%>
+                    <div class="user-widget-statatistic">
+                        <ul class="clearfix">
+                            <li class="border-red">
+
+                            </li>
+                            <li class="border-green">
+
+                            </li>
+                            <li class="border-yellow">
+
+                            </li>
+                        </ul><!-- ./row -->
+                    </div>
+                </div><!-- ./user-widget -->
+            </div>
+            <!--日历-->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="smart-widget">
+                                <div class="smart-widget-header">
+                                    <i class="fa fa-calendar m-right-xs"></i>日历
+											<span class="smart-widget-option">
+												<span class="refresh-icon-animated">
+													<i class="fa fa-circle-o-notch fa-spin"></i>
+												</span>
+					                            <a href="#" class="widget-toggle-hidden-option">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+					                            <a href="#" class="widget-collapse-option" data-toggle="collapse">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+
+
+					                        </span>
+                                </div>
+                                <!--皮肤-->
+                                <div class="smart-widget-inner">
+                                    <div class="smart-widget-hidden-section">
+                                        <ul class="widget-color-list clearfix">
+                                            <li style="background-color:#20232b;" data-color="widget-dark"></li>
+                                            <li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
+                                            <li style="background-color:#23b7e5;" data-color="widget-blue"></li>
+                                            <li style="background-color:#2baab1;" data-color="widget-green"></li>
+                                            <li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
+                                            <li style="background-color:#fbc852;" data-color="widget-orange"></li>
+                                            <li style="background-color:#e36159;" data-color="widget-red"></li>
+                                            <li style="background-color:#7266ba;" data-color="widget-purple"></li>
+                                            <li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
+                                            <li style="background-color:#fff;" data-color="reset"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="smart-widget-body no-padding bg-grey">
+                                        <p id="calendar" class="custom-calendar no-margin full-width"></p>
+                                    </div>
+                                    <ul class="list-group no-border">
+                                        <li class="list-group-item">
+
+                                            <span class="badge badge-success"></span>
+                                        </li>
+                                        <li class="list-group-item">
+
+                                            <span class="badge badge-danger"></span>
+                                        </li>
+                                    </ul>
+                                </div><!-- ./smart-widget-inner -->
+                            </div><!-- ./smart-widget -->
+                        </div><!-- ./col -->
+                        <!--每日事项-->
+                        <div class="col-lg-6">
+                            <div class="smart-widget">
+                                <div class="smart-widget-header">
+
+                                    每日事项
+                                </div>
+                                <div class="smart-widget-inner">
+                                    <div class="smart-widget-body clearfix">
+
+                                        <a href="/todolist" class="btn btn-success btn-sm pull-right"><i
+                                                class="fa fa-plus"></i>
+                                            添加事项</a>
+                                    </div>
+                                    <ul class="list-group to-do-list sortable-list no-border">
+                                        <% ToDoDatalist.forEach(function(item){ %>
+                                        <li class="list-group-item" draggable="true">
+                                            <div class="custom-checkbox todo-checkbox">
+                                                <input type="checkbox" value="None" id="todo-check <%=item.todo_id %>">
+                                                <label for="todo-check <%=item.todo_id %>"></label>
+                                            </div>
+                                            <%=item.todo_title %>
+
+                                        </li>
+                                        <% });%>
+                                    </ul>
+                                </div><!-- ./smart-widget-inner -->
+                            </div><!-- ./smart-widget -->
+
+                        </div><!-- ./col -->
+
+                    </div><!-- ./row -->
+
+                </div><!-- ./col -->
+                <!--用户列表-->
+                <div class="col-lg-4">
+                    <div class="smart-widget">
+                        <div class="smart-widget-header">
+                            用户列表
+							<span class="smart-widget-option">
+								<span class="refresh-icon-animated">
+									<i class="fa fa-circle-o-notch fa-spin"></i>
+								</span>
+	                            <a href="#" class="widget-toggle-hidden-option">
+                                    <i class="fa fa-cog"></i>
+                                </a>
+	                            <a href="#" class="widget-collapse-option" data-toggle="collapse">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+
+	                        </span>
+                        </div>
+                        <div class="smart-widget-inner">
+                            <div class="smart-widget-hidden-section">
+                                <ul class="widget-color-list clearfix">
+                                    <li style="background-color:#20232b;" data-color="widget-dark"></li>
+                                    <li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
+                                    <li style="background-color:#23b7e5;" data-color="widget-blue"></li>
+                                    <li style="background-color:#2baab1;" data-color="widget-green"></li>
+                                    <li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
+                                    <li style="background-color:#fbc852;" data-color="widget-orange"></li>
+                                    <li style="background-color:#e36159;" data-color="widget-red"></li>
+                                    <li style="background-color:#7266ba;" data-color="widget-purple"></li>
+                                    <li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
+                                    <li style="background-color:#fff;" data-color="reset"></li>
+                                </ul>
+                            </div>
+                            <div class="smart-widget-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>帐户名</th>
+                                        <th>活跃</th>
+                                        <th></th>
+                                        <th>注册时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% Userlist.forEach(function(item){ %>
+                                    <tr>
+                                        <td><%= item.username %></td>
+                                        <td>
+                                            <div class="progress progress-striped active"
+                                                 style="height:8px; margin:5px 0 0 0;">
+                                                <div class="progress-bar progress-bar-warning"
+                                                     style="width: 18%">
+                                                    <span class="sr-only">18% Complete</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>18%</td>
+                                        <td><span class="badge badge-warning"><%= item.userdate %></span></td>
+                                    </tr>
+                                    <%});%>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><!-- ./smart-widget-inner -->
+                    </div>
+                </div><!-- ./col -->
+            </div><!-- ./row -->
+            <!--天气状况-->
+            <div class="row" id="weather">
+                <div class="col-md-3 md-3">
+                </div><!-- ./col -->
+                <div class="col-md-3 md-4">
+                </div><!-- ./col -->
+                <div class="col-md-3 md-5">
+                </div><!-- ./col -->
+                <div class="col-md-3 md-6">
+               </div><!-- ./col -->
+            </div>
+        </div><!-- ./padding-md -->
+    </div><!-- /main-container -->
+    <!--尾部信息-->
+    <footer class="footer">
+				<span class="footer-brand">
+					<strong class="text-danger">Martian</strong> Admin
+				</span>
+        <p class="no-margin">
+            &copy; 2016 <strong>Martian Manager</strong>. ALL Rights Reserved.
+        </p>
+    </footer>
+</div><!-- /wrapper -->
+
+<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
+
+<!-- Jquery -->
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/javascripts/js/bootstrap.min.js"></script>
+
+<!-- Flot -->
+<script src='/javascripts/jquery.flot.min.js'></script>
+
+<!-- Slimscroll -->
+<script src='/javascripts/jquery.slimscroll.min.js'></script>
+
+<!-- Morris -->
+<script src='/javascripts/rapheal.min.js'></script>
+<!--<script src='/javascripts/morris.min.js'></script>-->
+
+<!-- Datepicker -->
+<script src='/javascripts/uncompressed/datepicker.js'></script>
+
+<!-- Sparkline -->
+<script src='/javascripts/sparkline.min.js'></script>
+
+<!-- Skycons -->
+<script src='/javascripts/uncompressed/skycons.js'></script>
+
+<!-- Popup Overlay -->
+<script src='/javascripts/jquery.popupoverlay.min.js'></script>
+
+<!-- Easy Pie Chart -->
+<script src='/javascripts/jquery.easypiechart.min.js'></script>
+
+<!-- Sortable -->
+<script src='/javascripts/uncompressed/jquery.sortable.js'></script>
+
+<!-- Owl Carousel -->
+<script src='/javascripts/owl.carousel.min.js'></script>
+
+<!-- Modernizr -->
+<script src='/javascripts/modernizr.min.js'></script>
+
+<!-- Simplify -->
+<script src="/javascripts/simplify/simplify.js"></script>
+<script src="/javascripts/simplify/simplify_dashboard.js"></script>
+
+<script src="/javascripts/jquery.simpleWeather.min.js"></script>
+<script type="text/javascript" src="/javascripts/main.js"></script>
+
+<script type="text/javascript" src="/javascripts/jquery.cityselect.js"></script>
+<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?
+format=js"></script>
+
+
+</body>
+</html>

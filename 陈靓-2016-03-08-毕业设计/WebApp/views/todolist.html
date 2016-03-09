@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+	    <meta charset="utf-8">
+	    <title>待办事项</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+
+	    <!-- Bootstrap core CSS -->
+	    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- Font Awesome -->
+		<link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+
+		<!-- ionicons -->
+		<link href="/stylesheets/ionicons.min.css" rel="stylesheet">
+		<link href="/stylesheets/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		
+		<!-- Simplify -->
+		<link href="/stylesheets/simplify.css" rel="stylesheet">
+		<!--<link href="/bulid/simplify-css.min.css" rel="stylesheet">-->
+	
+  	</head>
+
+  	<body class="overflow-hidden">
+		<div class="wrapper preload">
+
+			<header class="top-nav">
+				<div class="top-nav-inner">
+					<div class="nav-header">
+						<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleSM">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						
+						<ul class="nav-notification pull-right">
+							<li>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i></a>
+								<span class="badge badge-danger bounceIn">1</span>
+								<ul class="dropdown-menu dropdown-sm pull-right">
+									<li class="user-avatar">
+										<img src="images/profile/profile1.jpg" alt="" class="img-circle">
+										<div class="user-content">
+											<% if (locals.username) { %>
+											<h5 class="no-m-bottom"><%= username %></h5>
+											<% } %>
+											<div class="m-top-xs">
+												<a href="/profile" class="m-right-sm">个人资料</a>
+												<a href="/logout">退出</a>
+											</div>
+										</div>
+									</li>	  
+
+								</ul>
+							</li>
+						</ul>
+
+						<a href="/" class="brand">
+							<i><img src="/images/logo.png" alt="" width="20" height="23"></i><span class="brand-name"><img
+								src="/images/weblogo.png" alt=""></span>
+						</a>
+					</div>
+					<div class="nav-container">
+						<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleLG">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+
+						<div class="pull-right m-right-sm">
+							<div class="user-block hidden-xs">
+								<a href="#" id="userToggle" data-toggle="dropdown">
+									<img src="images/profile/profile1.jpg" alt="" class="img-circle inline-block user-profile-pic">
+									<% if (locals.username) { %>
+									<div class="user-detail inline-block">
+										<%= username %>
+										<i class="fa fa-angle-down"></i>
+									</div>
+									<% } %>
+								</a>
+								<div class="panel border dropdown-menu user-panel">
+									<div class="panel-body paddingTB-sm">
+										<ul>
+											<li>
+												<a href="/profile">
+													<i class="fa fa-edit fa-lg"></i><span class="m-left-xs">个人资料</span>
+												</a>
+											</li>
+
+											<li>
+												<a href="/logout">
+													<i class="fa fa-power-off fa-lg"></i><span class="m-left-xs">退出</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div><!-- ./top-nav-inner -->	
+			</header>
+			<!--左侧导航栏-->
+			<aside class="sidebar-menu fixed">
+				<div class="sidebar-inner scrollable-sidebar">
+					<div class="main-menu">
+						<ul class="accordion">
+							<li class="menu-header">
+								个人主页
+							</li>
+
+							<li class="bg-palette2 active">
+								<a href="/main">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-desktop fa-lg"></i></span>
+										<span class="text m-left-sm">个人主页</span>
+									</span>
+									<span class="menu-content-hover block">
+										个人主页
+									</span>
+								</a>
+							</li>
+							<li class="openable bg-palette3">
+								<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-camera fa-lg"></i></span>
+										<span class="text m-left-sm">生活记录</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										生活记录
+									</span>
+								</a>
+								<ul class="submenu">
+									<li><a href="/blog"><span class="submenu-label">最近动态</span></a></li>
+									<li><a href="/publish_blogs"><span class="submenu-label">发布心情</span></a></li>
+
+								</ul>
+							</li>
+
+							<li class="openable bg-palette4">
+								<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-tags fa-lg"></i></span>
+										<span class="text m-left-sm">日程管理</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										日程管理
+									</span>
+								</a>
+								<ul class="submenu">
+
+									<li><a href="/todolist"><span class="submenu-label">ToDoList</span></a></li>
+
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+
+				</div><!-- sidebar-inner -->
+			</aside>
+
+			<div class="main-container">
+				<div class="padding-md">
+					<h2 class="header-text">
+						每日事项
+					</h2>
+					<div class="row">
+						<div class="col-md-10">
+							<div class="timeline-wrapper clearfix">
+								<div class="timeline-year">
+									编辑
+								</div>
+								<% ToDoDatalist.forEach(function(item){ %>
+								<div class="timeline-row alt">
+									<div class="timeline-item">
+										<!--事项编辑按钮-->
+										<div class="timeline-icon">
+											<a href="/todolistupdata/<%=item.todo_id %>" data-toggle="modal" ><i class="fa fa-pencil"></i></a>
+										</div>
+										<!--每日事项-->
+										<div class="timeline-item-inner">
+											<div class="timeline-body">
+												<div class="timeline-avatar">
+													<img src="images/profile/profile3.jpg" alt="" class="img-circle">
+												</div>
+												<!--每日事项，比阿提，时间，和内容-->
+												<div class="timeline-content">
+													<div class="font-16 font-semi-bold"><a href="#" class="widget-remove-option"><%=item.todo_title %></a> </div>
+													<p class="block text-muted m-bottom-xs"><%=item.todo_starttime %>～<%=item.todo_endtime %></p>
+													<%=item.todo_content %>
+												</div>
+											</div><!-- ./timeline-body -->
+										</div><!-- ./timeline-item-inner -->
+									</div><!-- ./timeline-item -->
+								</div><!-- ./timeline-row -->
+								<!--是否完成任务-->
+									<div class="custom-popup delete-widget-popup delete-confirmation-popup" id="deleteWidgetConfirm">
+										<div class="popup-header text-center">
+										<span class="fa-stack fa-4x">
+										  <i class="fa fa-circle fa-stack-2x"></i>
+										  <i class="fa fa-check-circle-o fa-stack-1x fa-inverse"></i>
+										</span>
+										</div>
+										<div class="popup-body text-center">
+											<h5>确定完成该项任务了吗?</h5>
+											<strong class="block m-top-xs"><i class="fa fa-exclamation-circle m-right-xs text-danger"></i>事项完成后将会删除</strong>
+
+											<div class="text-center m-top-lg">
+												<a href="/todolistdelete/<%=item.todo_id %>" class="btn btn-success m-right-sm remove-widget-btn">完成</a>
+												<a href="/todolist" class="btn btn-default deleteWidgetConfirm_close">取消</a>
+											</div>
+										</div>
+									</div>
+
+								<%});%>
+								<div class="timeline-row alt">
+									<div class="timeline-item">
+
+										<div class="timeline-item-inner">
+											<div class="timeline-body">
+
+												<div class="seperate-bar bg-grey font-12 m-top-md">
+													<small class="inline-block m-right-sm"></small>
+													<small class="inline-block m-right-sm"></small>
+													<small class="inline-block m-right-sm"></small>
+												</div>
+												<!--添加事项按钮-->
+												<div class="social-reply-section clearfix">
+													<img src="images/profile/profile1.jpg" alt="">
+													<div class="input-wrapper">
+														<div class="input-icon-link">
+															<a href="#addNewEventModal" class="text-normal" data-toggle="modal">
+																添加事项
+																<i class="fa fa-plus fa-lg"></i>
+															</a>
+														</div>
+													</div>
+												</div>
+											</div><!-- ./timeline-body -->
+										</div><!-- ./timeline-item-inner -->
+									</div><!-- ./timeline-item -->
+								</div><!-- ./timeline-row -->
+							</div><!-- ./timeline-wrapper -->
+						</div><!-- ./col -->
+					</div><!-- ./row -->
+				</div><!-- ./padding-md -->
+			</div><!-- /main-container -->
+		</div><!-- /wrapper -->
+
+		<a href="#" id="scroll-to-top" class="hidden-print"><i class="icon-chevron-up"></i></a>
+		<!--添加每日事项-->
+		<div class="modal fade" id="addNewEventModal">
+
+			<div class="modal-dialog ">
+
+				<div class="modal-content ">
+					<div class="modal-header ">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title" id="myModalLabel">添加事项</h4>
+					</div>
+					<div class="todo-list"></div>
+					<form method="post" onsubmit="false">
+					<div class="modal-body">
+						<div class="form-group todotitle">
+							<label class="control-label">事项标题</label>
+							<input class="form-control todolisttitle" placeholder="请输入事项的标题..." name="todo_title" />
+						</div>
+					</div>
+					<div class="modal-body">
+						<div class="form-group start">
+							<label class=" control-label">开始时间</label>
+
+								<div class="input-group">
+									<input class="datepicker-input form-control starttime" type="text" name="todo_starttime">
+
+									<span class="input-group-addon"><i class="fa fa-circle-o"></i></span>
+								</div>
+						</div>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label class=" control-label">结束时间</label>
+
+							<div class="input-group">
+								<input class="datepicker-input form-control endtime" type="text" name="todo_endtime">
+
+								<span class="add-on input-group-addon"><i class="fa  fa-check-circle"></i></span>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="modal-body">
+						<div class="form-group todocontent">
+							<label class="control-label">事项内容</label>
+							<textarea class="form-control todolistcontent" placeholder="请输入事项的具体内容..." rows="5" name="todo_content" ></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-success add-todo">添加</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+					</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+
+		<!-- Jquery -->
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		
+		<!-- Bootstrap -->
+	    <script src="/javascripts/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll -->
+		<script src='/javascripts/jquery.slimscroll.min.js'></script>
+		
+		<!-- Popup Overlay -->
+		<script src='/javascripts/jquery.popupoverlay.min.js'></script>
+
+		<!-- Modernizr -->
+		<script src='/javascripts/modernizr.min.js'></script>
+		<script src='//cdn.bootcss.com/moment.js/2.11.2/moment.min.js'></script>
+		<!-- Parsley -->
+		<!--<script src="//cdn.bootcss.com/parsley.js/2.3.2/parsley.min.js"></script>-->
+		<!-- Date Time picker -->
+		<script src='/javascripts/uncompressed/bootstrap-datetimepicker.js'></script>
+
+		<!-- Simplify -->
+		<script src="/javascripts/simplify/simplify.js"></script>
+		<script src="/javascripts/todolist.js"></script>
+	
+  	</body>
+</html>

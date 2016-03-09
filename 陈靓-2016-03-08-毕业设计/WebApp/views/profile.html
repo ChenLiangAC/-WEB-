@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+	    <meta charset="utf-8">
+	    <title><%= title %></title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <!--<meta name="description" content="">-->
+	    <!--<meta name="author" content="">-->
+
+	    <!-- Bootstrap core CSS -->
+	    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- Font Awesome -->
+		<link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+
+		<!-- ionicons -->
+		<link href="/stylesheets/ionicons.min.css" rel="stylesheet">
+		
+		<!-- Datepicker -->
+		<link href="/stylesheets/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+		<!-- Owl Carousel -->
+		<link href="/stylesheets/owl.carousel.min.css" rel="stylesheet">
+		<link href="/stylesheets/owl.theme.default.min.css" rel="stylesheet">
+
+		<!-- Simplify -->
+		<link href="/stylesheets/simplify.css" rel="stylesheet">
+		<!--<link href="/bulid/simplify-css.min.css" rel="stylesheet">-->
+
+  	</head>
+
+  	<body class="overflow-hidden">
+		<div class="wrapper preload">
+			<header class="top-nav">
+				<div class="top-nav-inner">
+					<div class="nav-header">
+						<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleSM">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+
+						<ul class="nav-notification pull-right">
+							<li>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i></a>
+								<span class="badge badge-danger bounceIn">1</span>
+								<ul class="dropdown-menu dropdown-sm pull-right">
+									<li class="user-avatar">
+										<img src="images/profile/profile1.jpg" alt="" class="img-circle">
+										<div class="user-content">
+											<% if (locals.username) { %>
+											<h5 class="no-m-bottom"><%= username %></h5>
+											<% } %>
+											<div class="m-top-xs">
+												<a href="/profile" class="m-right-sm">个人资料</a>
+												<a href="/logout">退出</a>
+											</div>
+										</div>
+									</li>
+
+
+								</ul>
+							</li>
+						</ul>
+
+						<a href="/" class="brand">
+							<i><img src="/images/logo.png" alt="" width="20" height="23"></i><span class="brand-name"><img
+								src="/images/weblogo.png" alt=""></span>
+						</a>
+					</div>
+					<div class="nav-container">
+						<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleLG">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+
+						<div class="pull-right m-right-sm">
+							<div class="user-block hidden-xs">
+								<a href="#" id="userToggle" data-toggle="dropdown">
+									<img src="images/profile/profile1.jpg" alt="" class="img-circle inline-block user-profile-pic">
+									<% if (locals.username) { %>
+									<div class="user-detail inline-block">
+										<%= username %>
+										<i class="fa fa-angle-down"></i>
+									</div>
+									<% } %>
+								</a>
+								<div class="panel border dropdown-menu user-panel">
+									<div class="panel-body paddingTB-sm">
+										<ul>
+											<li>
+												<a href="/profile">
+													<i class="fa fa-edit fa-lg"></i><span class="m-left-xs">个人资料</span>
+												</a>
+											</li>
+
+											<li>
+												<a href="/logout">
+													<i class="fa fa-power-off fa-lg"></i><span class="m-left-xs">退出</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div><!-- ./top-nav-inner -->
+			</header>
+			<!--左侧导航栏-->
+			<aside class="sidebar-menu fixed">
+				<div class="sidebar-inner scrollable-sidebar">
+					<div class="main-menu">
+						<ul class="accordion">
+							<li class="menu-header">
+								个人主页
+							</li>
+
+							<li class="bg-palette2 active">
+								<a href="/main">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-desktop fa-lg"></i></span>
+										<span class="text m-left-sm">个人主页</span>
+									</span>
+									<span class="menu-content-hover block">
+										个人主页
+									</span>
+								</a>
+							</li>
+							<li class="openable bg-palette3">
+								<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-camera fa-lg"></i></span>
+										<span class="text m-left-sm">生活记录</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										生活记录
+									</span>
+								</a>
+								<ul class="submenu">
+									<li><a href="/blog"><span class="submenu-label">最近动态</span></a></li>
+									<li><a href="/publish_blogs"><span class="submenu-label">发布心情</span></a></li>
+
+								</ul>
+							</li>
+
+							<li class="openable bg-palette4">
+								<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-tags fa-lg"></i></span>
+										<span class="text m-left-sm">日程管理</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										日程管理
+									</span>
+								</a>
+								<ul class="submenu">
+
+									<li><a href="/todolist"><span class="submenu-label">ToDoList</span></a></li>
+
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+
+				</div><!-- sidebar-inner -->
+			</aside>
+
+			<!--编辑个人资料-->
+			<div class="main-container">
+				<div class="padding-md">
+					<% Datalist.forEach(function(item){ %>
+					<h3 class="header-text m-bottom-md">
+						用户个人资料
+
+						<span class="sub-header">
+							Welocome back, <%= item.data_name %>
+						</span>
+
+					</h3>
+
+					<div class="row user-profile-wrapper">
+						<div class="col-md-3 user-profile-sidebar m-bottom-md">
+							<div class="row">
+								<div class="col-sm-4 col-md-12">
+									<div class="user-profile-pic">
+										<img src="images/profile/profile1.jpg" alt="">
+										<div class="ribbon-wrapper">
+
+										</div>
+									</div>
+								</div>
+								<!--个人信息显示-->
+								<div class="col-sm-6 col-md-12">
+									<!--用户名-->
+									<div class="user-name m-top-sm"><%=item.data_name %><i class="fa fa-circle text-success m-left-xs font-14"></i></div>
+
+									<div class="m-top-sm">
+										<div >
+											<i class="fa fa-map-marker user-profile-icon lo-icon"></i>
+											<div class="localction"></div>
+										</div>
+										<input type="hidden" name="data_id" value="<%=item.data_id %>" />
+										<div class="m-top-xs">
+											<!--工作地点-->
+											<i class="fa fa-briefcase user-profile-icon"></i>
+											<%=item.data_work %>
+										</div>
+										<!--公司-->
+										<div class="m-top-xs">
+											<i class="fa fa-external-link user-profile-icon"></i>
+											<%=item.data_company %>
+										</div>
+									</div>
+									<!--自我介绍-->
+									<h4 class="m-top-md m-bottom-sm">关于我</h4>
+									<p class="m-top-sm">
+										<%=item.data_self %>
+									</p>
+									<h4 class="m-top-md m-bottom-sm">社交账号</h4>
+
+									<a class="social-link facebook-hover"><i class="fa fa-facebook"></i></a>
+									<a class="social-link twitter-hover"><i class="fa fa-twitter"></i></a>
+									<a class="social-link pinterest-hover"><i class="fa fa-pinterest"></i></a>
+
+								</div>
+							</div><!-- ./row -->
+						</div><!-- ./col -->
+						<div class="col-md-9">
+							<div class="smart-widget">
+								<div class="smart-widget-inner">
+									<ul class="nav nav-tabs tab-style2 tab-right bg-grey">
+										<li class="active">
+								  			<a href="#profileTab1" data-toggle="tab">
+								  				<span class="icon-wrapper"><i class="fa fa-book"></i></span>
+								  				<span class="text-wrapper">基础资料</span>
+								  			</a>
+								  		</li>
+									</ul>
+									<!--基础资料编辑更新-->
+									<div class="smart-widget-body">
+										<div class="tab-content">
+											<div class="tab-pane fade in active" id="profileTab2">
+												<h4 class="header-text m-top-md">基础资料</h4>
+
+												<form class="form-horizontal m-top-md profileTab" method="post">
+
+													<input type="hidden" name="data_id" value="<%=item.data_id %>" />
+													<div class="form-group">
+														<label class="col-sm-3 control-label">用户名</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control dataemail" value="<%=item.data_email %>" name="data_email" readonly>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">姓名</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control dataname" name="data_name" value="<%=item.data_name %>">
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="col-sm-3 control-label">年龄</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control dataage" value="<%=item.data_age %>" name="data_age">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">生日</label>
+														<div class="col-sm-9">
+															<input type="text" class="datepicker-input form-control databrithday" value="<%=item.data_brithday %>" name="data_brithday">
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="col-sm-3 control-label">电话</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control dataphone" value="<%=item.data_phone %>" name="data_phone">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">电子邮件</label>
+														<% if (locals.username) { %>
+														<div class="col-sm-9">
+															<input type="text" class="form-control dataemail" value="<%= username %>" name="data_email">
+														</div>
+														<% } %>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">职业</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control datawork" value="<%=item.data_work %>" name="data_work">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">公司</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control datacompany" value="<%=item.data_company %>" name="data_company">
+														</div>
+													</div>
+
+
+													<div class="form-group">
+														<label class="col-sm-3 control-label">关于我</label>
+														<div class="col-sm-9">
+															<textarea rows="4" class="form-control dataself" name="data_self"><%=item.data_self %></textarea>
+														</div>
+													</div>
+													<div class="form-group m-top-lg">
+														<label class="col-sm-3 control-label"></label>
+														<div class="col-sm-9 sub-group">
+															<button type="submit"  class="btn btn-default profile-sub">提交</button>
+															<a class="btn btn-info m-left-xs" href="/profile" data-toggle="tab">取消</a>
+														</div>
+													</div>
+													<%});%>
+												</form>
+											</div><!-- ./tab-pane -->
+
+											</div><!-- ./tab-pane -->
+										</div><!-- ./tab-content -->
+									</div><!-- ./smart-widget-body -->
+								</div><!-- ./smart-widget-inner -->
+							</div><!-- ./smart-widget -->
+						</div>
+					</div>
+				</div><!-- ./padding-md -->
+			</div><!-- /main-container -->
+		</div><!-- /wrapper -->
+
+		<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
+
+
+		<!-- Jquery -->
+		<script src="/javascripts/jquery-1.11.1.min.js"></script>
+		
+		<!-- Bootstrap -->
+	    <script src="/javascripts/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll -->
+		<script src='/javascripts/jquery.slimscroll.min.js'></script>
+		
+		<!-- Popup Overlay -->
+		<script src='/javascripts/jquery.popupoverlay.min.js'></script>
+
+		<!-- Easy Pie Chart -->
+		<script src='/javascripts/jquery.easypiechart.min.js'></script>
+
+		<!-- Owl Carousel -->
+		<script src='/javascripts/owl.carousel.min.js'></script>
+
+		<!-- Datepicker -->
+		<script src='/javascripts/uncompressed/bootstrap-datetimepicker.js'></script>
+
+		<!-- Modernizr -->
+		<script src='/javascripts/modernizr.min.js'></script>
+		
+		<!-- Simplify -->
+		<script src="/javascripts/simplify/simplify.js"></script>
+
+		<script type="text/javascript" src="/javascripts/profile.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery.cityselect.js"></script>
+		<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?
+format=js"></script>
+		<script type="text/javascript" src="/javascripts/cropbox.js"></script>
+
+  	</body>
+</html>

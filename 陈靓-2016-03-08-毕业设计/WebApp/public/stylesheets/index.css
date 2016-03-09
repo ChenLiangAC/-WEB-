@@ -1,0 +1,317 @@
+body{
+
+}
+/*外部容器*/
+.con-page{
+    margin: 0 auto;
+}
+.center-content{
+    margin: 0 auto;
+    text-align: center;
+}
+/*导航栏*/
+
+.navbar{
+    width: 100%;
+    z-index: 1000;
+
+}
+.navbar-default{
+    border:0!important;
+    background: url("../images/header-bg.png");
+}
+.navbar-brand{
+    padding: 17px 15px!important;
+}
+.header .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color:#f84d4d!important;
+    background-color: transparent;
+}
+
+/*banner*/
+.banner-con{
+    width: 685px;
+    height: 400px;
+    margin: -20px auto;
+}
+.banner-con .banner-items{
+    width: 100%;
+    position: relative;
+    top: 35px;
+    z-index: 1;
+}
+.bg-turn{
+    width:100%;
+    height:380px;
+    position: relative;
+    top: -373px;
+    left: -98px;
+}
+.banner-bg .bg-item{
+    width: 685px;
+    height: 380px;
+    position: absolute;
+    top: 50px;
+    left: 98px;
+}
+.banner-text{
+    margin-top: 10px;
+}
+.banner-text p{
+    color:#f84d4d;
+    line-height: 20px;
+}
+.banner-text .banner-txt{
+    font-size: 18px;
+    font-family: 微软雅黑;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+/*社交账号*/
+.banner-con .social-contact{
+    margin-top: 10px;
+}
+.social-title{
+    width: 206px;
+    margin: 0 auto;
+}
+.banner-con .social-contact .social-text{
+    position: relative;
+    top: 29px;
+    color: #333333;
+    font-family: 微软雅黑;
+    font-size: 10px;
+}
+.social-contact .social-media{
+    margin-top: 10px;
+}
+.social-contact .social-media .media-items{
+    cursor: pointer;
+    margin-left: 10px;
+}
+/*功能介绍*/
+.office-con{
+    width: 685px;
+    height: 706px;
+    margin: -20px auto;
+    background:#f84d4d ;
+}
+.office-con .office-title{
+    width:116px;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+.office-con .office-part{
+    margin-top: 122px;
+}
+.office-con .office-text{
+    position: relative;
+    top: 29px;
+    left: 4px;
+    color: #333333;
+    font-family: 微软雅黑;
+    font-size: 10px;
+}
+.office-con .office-content{
+    width:527px;
+    height:483px;
+    margin: -41px auto;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    z-index: 1;
+}
+.office-con .arrow{
+    cursor: pointer;
+    width: 21px;
+    height:42px;
+    display: block;
+    position: relative;
+    top:223px;
+}
+.office-con .left-arrow{
+    left:58px;
+}
+.office-con .right-arrow{
+    left:606px;
+    top:180px;
+}
+.office-content .office-show{
+    width:528px;
+    margin: 0 auto;
+    position: relative;
+    -webkit-transition-property: -webkit-transform, left, top;
+    -webkit-transition-duration: 0s;
+    -webkit-transform: translate3d(0px, 0, 0);
+    -webkit-transition-timing-function: ease;
+    -moz-transition-property: -moz-transform, left, top;
+    -moz-transition-duration: 0s;
+    -moz-transform: translate3d(0px, 0, 0);
+    -moz-transition-timing-function: ease;
+    -o-transition-property: -o-transform, left, top;
+    -o-transition-duration: 0s;
+    -o-transition-timing-function: ease;
+    -o-transform: translate(0px, 0);
+    -ms-transition-property: -ms-transform, left, top;
+    -ms-transition-duration: 0s;
+    -ms-transform: translate3d(0px, 0, 0);
+    -ms-transition-timing-function: ease;
+    transition-property: transform, left, top;
+    transition-duration: 0s;
+    transform: translate3d(0px, 0, 0);
+    transition-timing-function: ease;
+    left: 0;
+
+}
+.office-content .office-show .Introduction{
+    position: relative;
+    float: left;
+    width: 528px;
+    height: 483px;
+    left: 0px;
+}
+.office-content .office-show .Introduction .office-item {
+    width: 176px;
+    height:483px;
+    float: left;
+}
+.Introduction .office-item .sign-item{
+    margin-top: 10px;
+}
+.Introduction .office-item .icons{
+    margin-top: 25px;
+}
+.Introduction .office-item .show-text{
+    margin-top: 130px;
+}
+.Introduction .office-item .show-text p{
+    color:#fff;
+    font-size: 12px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 20px;
+    font-family: 微软雅黑;
+    width: 110px;
+}
+.office-content .office-show .Introduction .office-item.tools1{
+    background: url("../images/bg1.gif") no-repeat ;
+    background-size:176px 483px;
+}
+.office-content .office-show .Introduction .office-item.tools2{
+    background: url("../images/bg2.gif") no-repeat ;
+    background-size:176px 483px;
+}
+.office-content .office-show .Introduction .office-item.tools3{
+    background: url("../images/bg3.gif") no-repeat ;
+    background-size:176px 483px;
+}
+.office-content .office-show .Introduction .office-item.tools4{
+    background: url("../images/bg4.gif") no-repeat ;
+    background-size:176px 483px;
+}
+.office-content .office-show .Introduction .office-item.tools5{
+    background: url("../images/bg6.gif") no-repeat ;
+    background-size:176px 483px;
+}
+.office-content .office-show .Introduction .office-item.tools6{
+    background: url("../images/bg5.gif") no-repeat ;
+    background-size:176px 483px;
+}
+.office-content  .pages{
+    width: 100px;
+    height: 24px;
+    position: absolute;
+
+    margin: 510px 214px;
+}
+.office-content  .pages span{
+    cursor: pointer;
+}
+.office-content .pages .page-item{
+    width: 24px;
+    height: 24px;
+    background: url("../images/page.png") no-repeat;
+    position: absolute;
+    display: inline-block;
+
+}
+.office-content .pages .page-item.active{
+    background: url("../images/page-active.png") no-repeat;
+}
+.office-content .pages .item1{
+    margin-left: -35px;
+}
+.office-content .pages .item2 {
+    margin-left: 11px;
+}
+/*关于我们*/
+.about-con{
+    width:685px;
+    height:100%;
+    margin: 354px auto;
+}
+.about-con .about-title{
+    width:140px;
+    margin: 0 auto;
+    position: relative;
+    left: 0px;
+}
+.about-con .about-title p{
+    position: relative;
+    top:45px;
+    font-family: 微软雅黑;
+}
+.about-con .about-text{
+    width: 150px;
+    height:100px;
+    margin: 0 auto;
+    text-align: left;
+    color: #333333;
+    font-family: 微软雅黑;
+    line-height: 25px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.about-con .system-enter{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    width: 164px;
+    margin: 145px auto;
+}
+.about-con .enter-sign{
+    width:54px;
+    margin: 0 auto;
+}
+.about-con .enter-system{
+    position: relative;
+    top:-5px;
+    left:-1px;
+    cursor: pointer;
+}
+.about-con .enter-system a{
+    color:#333333;
+}
+.about-con .enter-system .txt:hover{
+    color:#f84d4d;
+    text-decoration: underline;
+}
+/*底部信息*/
+.footer{
+    width: 100%;
+    min-height: 65px;
+    border-radius: 4px;
+    margin: 20px auto;
+    background: url("../images/header-bg.png");
+}
+.footer .footer-text{
+    width:140px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 13px;
+    padding-top: 12px;
+    cursor: pointer;
+    color:#f84d4d;
+}
